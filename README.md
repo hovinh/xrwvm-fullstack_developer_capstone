@@ -27,7 +27,7 @@ cd /home/project/xrwvm-fullstack_developer_capstone/server/frontend
 npm run build
 
 
-## Part 3
+## Part 3a
 
 Build docker app
 
@@ -44,3 +44,13 @@ https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cogn
 https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/fetchDealer/3
 
 https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/fetchDealers/Kansas
+
+## Part 3b
+
+python3 manage.py makemigrations
+python3 manage.py migrate --run-syncdb
+
+username: root
+password: root
+
+https://hxvinhhcmus-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/get_cars
