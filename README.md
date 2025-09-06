@@ -25,3 +25,22 @@ npm run build
 
 cd /home/project/xrwvm-fullstack_developer_capstone/server/frontend
 npm run build
+
+
+## Part 3
+
+Build docker app
+
+cd server/database
+docker build . -t nodeapp
+
+Run docker-compose.yml
+docker-compose up
+
+https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/fetchReviews/dealer/29
+
+https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/fetchDealers
+
+https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/fetchDealer/3
+
+https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/fetchDealers/Kansas
