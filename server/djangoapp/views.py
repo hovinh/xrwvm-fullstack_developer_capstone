@@ -1,12 +1,7 @@
 # Uncomment the required imports before adding the code
 
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import logout
-from django.contrib import messages
-from datetime import datetime
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
@@ -39,11 +34,13 @@ def login_user(request):
         data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(data)
 
+
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request) # Terminate user session
     data = {"userName":""} # Return empty username
     return JsonResponse(data)
+
 
 # Create a `registration` view to handle sign up request
 @csrf_exempt
@@ -58,7 +55,6 @@ def registration(request):
     last_name = data['lastName']
     email = data['email']
     username_exist = False
-    email_exist = False
     try:
         # Check if user already exists
         User.objects.get(username=username)
@@ -70,7 +66,11 @@ def registration(request):
     # If it is a new user
     if not username_exist:
         # Create user in auth_user table
-        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,password=password, email=email)
+        user = User.objects.create_user(
+            username=username, 
+            first_name=first_name, 
+            last_name=last_name,
+            password=password, email=email)
         # Login the user and redirect to list page
         login(request, user)
         data = {"userName":username,"status":"Authenticated"}
@@ -95,7 +95,8 @@ def get_cars(request):
 # a list of dealerships
 # def get_dealerships(request):
 # ...
-#Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+#Update the `get_dealerships` render list of dealerships all by default, 
+# particular state if state is passed
 def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
@@ -139,3 +140,4 @@ def add_review(request):
             return JsonResponse({"status":401,"message":"Error in posting review"})
     else:
         return JsonResponse({"status":403,"message":"Unauthorized"})
+    

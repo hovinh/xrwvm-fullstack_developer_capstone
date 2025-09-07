@@ -56,6 +56,7 @@ password: root
 https://hxvinhhcmus-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/get_cars
 
 ## Part 3c
+Database backend service with Express-MongoDB
 
 cd /home/project/xrwvm-fullstack_developer_capstone/server/database
 docker build . -t nodeapp
@@ -65,6 +66,7 @@ docker-compose up
 
 Code Enginer CLI:
 cd xrwvm-fullstack_developer_capstone/server/djangoapp/microservices
+ibmcloud cr images
 docker build . -t us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer
 docker push us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer
 ibmcloud ce application create --name sentianalyzer --image us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer --registry-secret icr-secret --port 5000
