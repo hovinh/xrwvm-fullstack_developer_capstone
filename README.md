@@ -15,7 +15,8 @@ python3 manage.py runserver
 
 ## Part 2
 python3 manage.py createsuperuser
-superviolet, violet@email.com, pass789qwsa
+username: root
+password: root
 
 Application: port = 8000, open browser, then append /admin to the end of url.
 
@@ -50,8 +51,6 @@ https://hxvinhhcmus-3030.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cogn
 python3 manage.py makemigrations
 python3 manage.py migrate --run-syncdb
 
-username: root
-password: root
 
 https://hxvinhhcmus-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/djangoapp/get_cars
 
@@ -72,3 +71,17 @@ docker push us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer
 ibmcloud ce application create --name sentianalyzer --image us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer --registry-secret icr-secret --port 5000
 
 https://sentianalyzer.1zzb1trk8rvl.us-south.codeengine.appdomain.cloud
+
+
+## Part 4
+
+kubectl get deployments
+cd server
+MY_NAMESPACE=$(ibmcloud cr namespaces | grep sn-labs-)
+echo $MY_NAMESPACE
+docker build -t us.icr.io/$MY_NAMESPACE/dealership .
+docker push us.icr.io/$MY_NAMESPACE/dealership
+ibmcloud cr images
+
+kubectl apply -f deployment.yaml
+kubectl port-forward deployment.apps/dealership 8000:8000
